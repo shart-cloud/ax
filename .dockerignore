@@ -5,6 +5,8 @@
 *.log
 tmp/
 bin/
+# ...except the runner binary the task-runner image copies in.
+!bin/linux_amd64/ax-task-runner
 ax
 ax-server
 ax-task-runner
