@@ -152,6 +152,7 @@ func (r *TaskReconciler) Reconcile(ctx context.Context, task *v1alpha1.Task, gat
 	if geminiKey := r.lookupGeminiKey(ctx, atespace); geminiKey != "" {
 		extraEnv[geminiSecretKey] = geminiKey
 	}
+	injectModelEnv(ctx, r.SecretResolver, osGetenv, atespace, extraEnv)
 
 	// Inject Task YAML specification into container environment
 	if taskYAML, err := yaml.Marshal(task); err == nil {
